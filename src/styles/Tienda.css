@@ -1,0 +1,31 @@
+/* @import url("https://unpkg.com/aos@2.3.1/dist/aos.css"); */
+
+body{
+    padding-top: 75px;
+}
+
+.precio {
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.product-card h3{
+    font-size: 1.4rem;
+    padding: 0.4rem;
+}
+
+.product-card img {
+    height: auto;
+}
+
+.products-title{
+    text-transform: capitalize;
+}
+
+
+@media screen and (max-width: 600px) {
+    body{
+        padding-top: 0;
+    }
+
+}
