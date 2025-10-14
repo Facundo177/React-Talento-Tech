@@ -1,39 +1,54 @@
-function CategoriaProductos({ categoria }) {
+import { useEffect, useState } from "react";
 
-    let productos = [];
-    cargarProductos();
+function CategoriaProductos({ categoria, agregarAlCarrito }) {
 
-    async function cargarProductos() {
-        try {
-            const response = await fetch('https://dummyjson.com/products/category/' + categoria);
-            const data = await response.json();
+    // const [productos, setProductos] = useState([]);
 
-            productos = data.products;
+    // useEffect(() => {
+    //     const controller = new AbortController();
+    //     const signal = controller.signal;
 
-        } catch (error) {
-            console.error("Error al obtener productos: ", error);
-        }
-    }
+    //     fetch('https://dummyjson.com/products/category/' + categoria, { signal })
+    //         .then(response => response.json())
+    //         .then(data => setProductos(data))
+    //         .catch(err => {
+    //             if (err.name === 'AbortError') {
+    //                 console.log('Fetch aborted');
+    //             } else {
+    //                 console.error('Another error occurred:', err);
+    //             }
+    //         });
+
+    //     return () => controller.abort();
+    // }, []);
+
+
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('https://dummyjson.com/products/category/' + categoria);
+                const result = await response.json();
+                const productos = result.products;
+                setData(productos);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, [categoria]);
+
 
     function agregarProductoAlCarrito(producto) {
-        print(producto);
-        
-        // let carrito = JSON.parse(localStorage.getItem("carritoDeCompras")) || [];
-        // const indiceProductoExistente = carrito.findIndex(item => item.id === producto.id);
-        // if (indiceProductoExistente !== -1) {
-        //     carrito[indiceProductoExistente].cantidad++;
-        // } else {
-        //     carrito.push({
-        //         id: producto.id,
-        //         nombre: producto.title,
-        //         precio: producto.price,
-        //         cantidad: 1
-        //     });
-        // }
+        const nuevoProducto = {
+            id: producto.id,
+            nombre: producto.title,
+            precio: producto.price
+        };
 
-        // localStorage.setItem("carritoDeCompras", JSON.stringify(carrito));
-
-        // actualizarNumeroCarrito();
+        agregarAlCarrito(nuevoProducto);
     }
 
     return (
@@ -45,7 +60,7 @@ function CategoriaProductos({ categoria }) {
             </div>
 
             <div class="products-container">
-                {productos.map(producto =>
+                {data.map((producto) => (
                     <>
                         <div class="product-card" data-aos="zoom-in-up">
                             <img srcSet={producto.images.join(", ")} alt="${producto.title}" />
@@ -61,7 +76,7 @@ function CategoriaProductos({ categoria }) {
                             </button>
                         </div>
                     </>
-                )}
+                ))}
             </div>
         </>
     )

@@ -1,15 +1,15 @@
 import "../styles/Tienda.css"
 import CategoriaProductos from '../components/CategoriaProductos';
 
-function Tienda() {
+function Tienda({agregarAlCarrito}) {
 
   return (
     <>
       <main>
         <section id="productos" class="products">
-          <CategoriaProductos categoria={"smartphones"} />
-          <CategoriaProductos categoria={"laptops"} />
-          <CategoriaProductos categoria={"tablets"} />
+          <CategoriaProductos categoria={"smartphones"} agregarAlCarrito={agregarAlCarrito} />
+          <CategoriaProductos categoria={"laptops"} agregarAlCarrito={agregarAlCarrito} />
+          <CategoriaProductos categoria={"tablets"} agregarAlCarrito={agregarAlCarrito} />
         </section>
       </main>
     </>

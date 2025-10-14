@@ -3,11 +3,11 @@
 // import viteLogo from '/vite.svg'
 
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
-import Home from './pages/Home'
-
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Home from './pages/Home'
 import Tienda from './pages/Tienda';
 import Carrito from './pages/Carrito';
 import Navbar from './components/Navbar';
@@ -16,7 +16,7 @@ import Footer from './components/Footer';
 
 AOS.init();
 function App() {
-  
+
   const [carrito, setCarrito] = useState([]);
 
   const agregarAlCarrito = (producto) => {
@@ -26,7 +26,7 @@ function App() {
   const vaciarCarrito = () => {
     setCarrito([]);
   };
-  
+
 
   return (
     // <>
@@ -53,17 +53,17 @@ function App() {
     // </>
 
     <>
-      <Navbar cantProductos={carrito.length}/>
+      <Navbar cantProductos={carrito.length} />
 
-      {/* <Home /> */}
-      {/* <Tienda /> */}
-      <Carrito 
-      carrito={carrito}
-      agregarAlCarrito={agregarAlCarrito} 
-      vaciarCarrito={vaciarCarrito} />
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='/tienda' element={<Tienda agregarAlCarrito={agregarAlCarrito} />} />
+        <Route path='/carrito' element={<Carrito
+          carrito={carrito}
+          agregarAlCarrito={agregarAlCarrito}
+          vaciarCarrito={vaciarCarrito} />} />
+      </Routes>
 
-
-      
       <Footer mostrarSecciones={true} />
 
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
