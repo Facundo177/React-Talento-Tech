@@ -31,9 +31,8 @@ function Footer({mostrarSecciones=false}) {
                     <div class="footer-section" style={{display: mostrarSecciones ? "flex" : "none"}}>
                         <h5>Secciones</h5>
                         <a href="#hero">Home</a>
-                        <a href="#productos">Tienda</a>
+                        <a href="#productos">Catálogo</a>
                         <a href="#acerca">Acerca de</a>
-                        <a href="#footer">Contacto</a>
                     </div>
 
                 </div>

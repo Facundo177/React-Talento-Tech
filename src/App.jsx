@@ -60,7 +60,6 @@ function App() {
         <Route path='/tienda' element={<Tienda agregarAlCarrito={agregarAlCarrito} />} />
         <Route path='/carrito' element={<Carrito
           carrito={carrito}
-          agregarAlCarrito={agregarAlCarrito}
           vaciarCarrito={vaciarCarrito} />} />
       </Routes>
 

@@ -24,6 +24,7 @@ function CategoriaProductos({ categoria, agregarAlCarrito }) {
 
 
     const [data, setData] = useState([]);
+    const [cargando, setCargando] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -32,14 +33,15 @@ function CategoriaProductos({ categoria, agregarAlCarrito }) {
                 const result = await response.json();
                 const productos = result.products;
                 setData(productos);
+                setCargando(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
+                setCargando(false);
             }
         };
 
         fetchData();
     }, [categoria]);
-
 
     function agregarProductoAlCarrito(producto) {
         const nuevoProducto = {
@@ -50,6 +52,9 @@ function CategoriaProductos({ categoria, agregarAlCarrito }) {
 
         agregarAlCarrito(nuevoProducto);
     }
+
+
+    if (cargando) return <p>Cargando productos...</p>;
 
     return (
         <>

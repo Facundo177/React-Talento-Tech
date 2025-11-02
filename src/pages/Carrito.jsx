@@ -1,29 +1,12 @@
 import "../styles/Carrito.css"
 
-function Carrito({ carrito, agregarAlCarrito, vaciarCarrito }) {
-
-  const listaProductos = [
-    { id: 1, nombre: 'Camiseta', precio: 15.000 },
-    { id: 2, nombre: 'Pantalón', precio: 30.000 },
-    { id: 3, nombre: 'Zapatos', precio: 50.000 },
-  ];
+function Carrito({ carrito, vaciarCarrito }) {
 
   const total = carrito.reduce((sum, item) => sum + item.precio, 0);
 
   return (
     <>
-      <main>
-
-
-
-        <ul>
-          {listaProductos.map((producto) => (
-            <li key={producto.id}>
-              {producto.nombre}: ${producto.precio.toFixed(2)}
-              <button onClick={() => agregarAlCarrito(producto)}>Agregar</button>
-            </li>
-          ))}
-        </ul>
+      <main style={{justifyItems: "center"}}>
 
         <h2>Carrito de Compras</h2>
         {carrito.length === 0 
