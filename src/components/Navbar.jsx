@@ -1,7 +1,14 @@
 import { Link, Route, Routes } from 'react-router-dom';
+import { useAppContext } from "../context/AppContext";
 import '../styles/Navbar.css'
 
-function Navbar({ cantProductos }) {
+function Navbar() {
+
+    const { isAuthenticated, usuario, carrito, cerrarSesion } = useAppContext();
+
+
+    const cantProductos = carrito.length;
+
     return (
         <>
             <header>
@@ -32,7 +39,28 @@ function Navbar({ cantProductos }) {
                                 <Link to="/tienda">Tienda</Link>
                             </>
                         } />
+                        <Route path='/login' element={
+                            <>
+                                <Link to="/">Home</Link>
+                                <Link to="/tienda">Tienda</Link>
+                            </>
+                        } />
                     </Routes>
+
+                    {isAuthenticated ? (
+                        <div >
+                            <span className='nav-usuario'>Hola, <strong>{usuario.nombre}</strong></span>
+                            <button className='nav-boton-logout' onClick={cerrarSesion}>
+                                Cerrar Sesión
+                            </button>
+                        </div>
+                    ) : (
+                        <Link to="/login">
+                            <button className='nav-boton-login'>
+                            Iniciar Sesión
+                            </button>
+                            </Link>
+                    )}
 
                     <Link to="/carrito" class="nav-shopping-cart">
                         <svg class="nav-svg-shop" xmlns="http://www.w3.org/2000/svg"

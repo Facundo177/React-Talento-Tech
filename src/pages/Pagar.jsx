@@ -1,12 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
 import "../styles/Pagar.css";
 
-export default function Pagar({
-  isAuthenticated,
-  setIsAuthenticated,
-  usuario,
-  setUsuario,
-}) {
+export default function Pagar() {
+
+  const { isAuthenticated, setIsAuthenticated, usuario, setUsuario } = useAppContext();
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -45,10 +44,10 @@ export default function Pagar({
         {carrito.map((producto) => (
           <div key={producto.id}>
             <img srcSet={producto.images.join(", ")} alt={producto.title}/>
-            <div>
-            <span>{producto.title}</span>
+            <span>
+            <p>{producto.title}</p>
             <strong>${producto.price}</strong>
-            </div>
+            </span>
           </div>
         ))}
 

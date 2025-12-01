@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAppContext } from "../context/AppContext";
 import "../styles/Login.css";
 
-export default function IniciarSesion({ setIsAuthenticated, setUsuario }) {
+export default function IniciarSesion() {
   const navigate = useNavigate();
   const ubicacion = useLocation();
+
+  const { setIsAuthenticated, setUsuario } = useAppContext();
 
   const [formulario, setFormulario] = useState({ nombre: '', email: '' });
 
@@ -50,7 +53,7 @@ export default function IniciarSesion({ setIsAuthenticated, setUsuario }) {
             Iniciar Sesión
           </button>
           <button className='login-boton-cancelar' type="button"
-            onClick={() => navigate('/productos')}>
+            onClick={() => navigate('/tienda')}>
             Cancelar
           </button>
         </div>

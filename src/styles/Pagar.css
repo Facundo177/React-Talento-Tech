@@ -25,6 +25,10 @@
   padding: 0 10%;
 }
 
+.pagar-compra h2 {
+  margin: 0 0 20px 0;
+}
+
 .pagar-compra h3 {
   text-align: center;
   margin: 20px 0;
@@ -33,7 +37,8 @@
 
 .pagar-lista-productos {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
 }
@@ -41,13 +46,16 @@
 .pagar-lista-productos div {
   display: flex;
   flex-direction: row;
+  width: fit-content;
+  padding: 15px 60px 15px 15px;
+  box-shadow: inset white -1px -1px 3px 1px;
 }
 
 .pagar-lista-productos div img {
   width: 8rem;
 }
 
-.pagar-lista-productos div div {
+.pagar-lista-productos div span {
   display: flex;
   flex-direction: column;
   align-items: center;

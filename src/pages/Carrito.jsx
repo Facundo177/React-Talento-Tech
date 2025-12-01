@@ -1,9 +1,13 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useAppContext } from "../context/AppContext";
+
 import "../styles/Carrito.css"
 
-function Carrito({ carrito, vaciarCarrito }) {
+function Carrito() {
+
+  const {carrito, vaciarCarrito, isAuthenticated} = useAppContext();
 
   const navigate = useNavigate();
 

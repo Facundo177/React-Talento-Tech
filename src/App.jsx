@@ -16,26 +16,12 @@ import ProductoDetalle from './pages/DetalleProducto';
 import IniciarSesion from './pages/Login';
 import RutaProtegida from './components/RutaProtegida';
 import Pagar from './pages/Pagar';
+import { AppProvider } from './context/AppContext';
 
 
 
 AOS.init();
 function App() {
-
-  const [carrito, setCarrito] = useState([]);
-
-  const agregarAlCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
-  };
-
-  const vaciarCarrito = () => {
-    setCarrito([]);
-  };
-
-
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [usuario, setUsuario] = useState({ nombre: "", email: "" });
-
 
   return (
     // <>
@@ -62,36 +48,33 @@ function App() {
     // </>
 
     <>
-      <Navbar cantProductos={carrito.length} />
-      <div style={{ minHeight: '80vh'}}>
+      <AppProvider>
 
-        <Routes>
-          <Route path='/' element={<Home />} />
+        <Navbar />
+        <div style={{ minHeight: '80vh' }}>
 
-          <Route path='/tienda' element={<Tienda agregarAlCarrito={agregarAlCarrito} />} />
+          <Routes>
+            <Route path='/' element={<Home />} />
 
-          <Route path='/carrito' element={<Carrito
-            carrito={carrito}
-            vaciarCarrito={vaciarCarrito} />} />
+            <Route path='/tienda' element={<Tienda/>} />
 
-          <Route path='/productos/:categoria/:id' element={<ProductoDetalle />} />
+            <Route path='/carrito' element={<Carrito/>} />
 
-          <Route path='/login' element={<IniciarSesion
-            setIsAuthenticated={setIsAuthenticated}
-            setUsuario={setUsuario} />} />
+            <Route path='/productos/:categoria/:id' element={<ProductoDetalle />} />
 
-          <Route path='/pagar' element={
-            <RutaProtegida isAuthenticated={isAuthenticated}>
-              <Pagar
-                setIsAuthenticated={setIsAuthenticated}
-                setUsuario={setUsuario}
-                usuario={usuario} />
-            </RutaProtegida>} />
+            <Route path='/login' element={<IniciarSesion/>} />
 
-        </Routes>
+            <Route path='/pagar' element={
+              <RutaProtegida>
+                <Pagar/>
+              </RutaProtegida>} />
 
-      </div>
-      <Footer mostrarSecciones={false} />
+          </Routes>
+
+        </div>
+        <Footer mostrarSecciones={false} />
+
+      </AppProvider>
 
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script>
