@@ -1,8 +1,5 @@
 /* @import url("https://unpkg.com/aos@2.3.1/dist/aos.css"); */
 
-body{
-    padding-top: 75px;
-}
 
 .precio {
     font-weight: 700;
@@ -20,6 +17,20 @@ body{
 
 .products-title{
     text-transform: capitalize;
+}
+
+.tags-container{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+.tag{
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    background-color: burlywood;
+    border-radius: 15px;
 }
 
 

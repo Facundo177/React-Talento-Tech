@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function CategoriaProductos({ categoria, agregarAlCarrito }) {
 
@@ -43,15 +44,16 @@ function CategoriaProductos({ categoria, agregarAlCarrito }) {
         fetchData();
     }, [categoria]);
 
-    function agregarProductoAlCarrito(producto) {
-        const nuevoProducto = {
-            id: producto.id,
-            nombre: producto.title,
-            precio: producto.price
-        };
+    // function agregarProductoAlCarrito(producto) {
+    //     const nuevoProducto = {
+    //         id: producto.id,
+    //         nombre: producto.title,
+    //         precio: producto.price,
+    //         descp
+    //     };
 
-        agregarAlCarrito(nuevoProducto);
-    }
+    //     agregarAlCarrito(nuevoProducto);
+    // }
 
 
     if (cargando) return <p>Cargando productos...</p>;
@@ -70,15 +72,28 @@ function CategoriaProductos({ categoria, agregarAlCarrito }) {
                         <div class="product-card" data-aos="zoom-in-up">
                             <img srcSet={producto.images.join(", ")} alt="${producto.title}" />
                             <h3>{producto.title}</h3>
-                            <p>{producto.description}</p>
+                            <div className="tags-container">
+                                {producto.tags.map((tag) =>
+                                    <button className="tag">{tag}</button>
+                                )}
+                            </div>
                             <p class="precio">Precio: ${producto.price}</p>
-                            <button
-                                type="button"
-                                class="product-btn-agregar"
-                                id={"product-btn-agregar-$" + producto.id}
-                                onClick={() => agregarProductoAlCarrito(producto)}>
-                                Agregar al carrito
-                            </button>
+                            <div style={{display: 'flex', gap: '10px'}}>
+                                <Link to={`/productos/${producto.category}/${producto.id}`} state={{producto}}>
+                                <button
+                                    type="button"
+                                    class="product-btn-detalle">
+                                    Detalles
+                                </button>
+                                </Link>
+                                <button
+                                    type="button"
+                                    class="product-btn-agregar"
+                                    id={"product-btn-agregar-$" + producto.id}
+                                    onClick={() => agregarAlCarrito(producto)}>
+                                    Agregar al carrito
+                                </button>
+                            </div>
                         </div>
                     </>
                 ))}

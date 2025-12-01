@@ -18,11 +18,22 @@ function Navbar({ cantProductos }) {
                             <>
                                 <a href="#acerca">Acerca de</a>
                                 <a href="#footer">Contacto</a>
+                                <Link to="/tienda">Tienda</Link>
+                            </>
+                        } />
+                        <Route path='/tienda' element={
+                            <>
+                                <Link to="/">Home</Link>
+                            </>
+                        } />
+                        <Route path='/carrito' element={
+                            <>
+                                <Link to="/">Home</Link>
+                                <Link to="/tienda">Tienda</Link>
                             </>
                         } />
                     </Routes>
-                    <Link to="/">Home</Link>
-                    <Link to="/tienda">Tienda</Link>
+
                     <Link to="/carrito" class="nav-shopping-cart">
                         <svg class="nav-svg-shop" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 576 512">

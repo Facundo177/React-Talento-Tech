@@ -1,0 +1,45 @@
+.login-section{
+  margin-top: 76px;
+}
+.login-section h2{
+  text-align: center;
+  font-size: 2rem;
+  padding: 10% 0;
+}
+
+.formulario-inicio-sesion{
+  padding: 0 10%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.formulario-inicio-sesion input{
+  padding: 10px;
+  font-size: large;
+}
+.login-botones{
+  margin-top: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.login-boton-iniciar-sesion{
+  padding: 5px 10px;
+  width: fit-content;
+  background-color: #2aec2a;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: medium;
+}
+.login-boton-cancelar{
+  padding: 5px 10px;
+  width: fit-content;
+  background-color: #e43434;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: medium;
+}

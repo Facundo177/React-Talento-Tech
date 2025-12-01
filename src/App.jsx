@@ -12,6 +12,11 @@ import Tienda from './pages/Tienda';
 import Carrito from './pages/Carrito';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ProductoDetalle from './pages/DetalleProducto';
+import IniciarSesion from './pages/Login';
+import RutaProtegida from './components/RutaProtegida';
+import Pagar from './pages/Pagar';
+
 
 
 AOS.init();
@@ -26,6 +31,10 @@ function App() {
   const vaciarCarrito = () => {
     setCarrito([]);
   };
+
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [usuario, setUsuario] = useState({ nombre: "", email: "" });
 
 
   return (
@@ -54,16 +63,35 @@ function App() {
 
     <>
       <Navbar cantProductos={carrito.length} />
+      <div style={{ minHeight: '80vh'}}>
 
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/tienda' element={<Tienda agregarAlCarrito={agregarAlCarrito} />} />
-        <Route path='/carrito' element={<Carrito
-          carrito={carrito}
-          vaciarCarrito={vaciarCarrito} />} />
-      </Routes>
+        <Routes>
+          <Route path='/' element={<Home />} />
 
-      <Footer mostrarSecciones={true} />
+          <Route path='/tienda' element={<Tienda agregarAlCarrito={agregarAlCarrito} />} />
+
+          <Route path='/carrito' element={<Carrito
+            carrito={carrito}
+            vaciarCarrito={vaciarCarrito} />} />
+
+          <Route path='/productos/:categoria/:id' element={<ProductoDetalle />} />
+
+          <Route path='/login' element={<IniciarSesion
+            setIsAuthenticated={setIsAuthenticated}
+            setUsuario={setUsuario} />} />
+
+          <Route path='/pagar' element={
+            <RutaProtegida isAuthenticated={isAuthenticated}>
+              <Pagar
+                setIsAuthenticated={setIsAuthenticated}
+                setUsuario={setUsuario}
+                usuario={usuario} />
+            </RutaProtegida>} />
+
+        </Routes>
+
+      </div>
+      <Footer mostrarSecciones={false} />
 
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script>
@@ -76,4 +104,3 @@ function App() {
 }
 
 export default App
-

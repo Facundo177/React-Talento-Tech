@@ -1,0 +1,86 @@
+.pagar-section {
+  margin-top: 76px;
+}
+
+.pagar-usuario {
+  padding: 10%;
+}
+
+.pagar-usuario-nombre {}
+
+.pagar-usuario-email {
+  font-style: italic;
+}
+
+.pagar-usuario-boton {
+  margin-top: 15px;
+  border: none;
+  padding: 5px 10px;
+  background-color: gray;
+  color: black;
+  font-weight: 600;
+}
+
+.pagar-compra {
+  padding: 0 10%;
+}
+
+.pagar-compra h3 {
+  text-align: center;
+  margin: 20px 0;
+  text-decoration: underline;
+}
+
+.pagar-lista-productos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pagar-lista-productos div {
+  display: flex;
+  flex-direction: row;
+}
+
+.pagar-lista-productos div img {
+  width: 8rem;
+}
+
+.pagar-lista-productos div div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.pagar-botones {
+  padding: 0 10% 10% 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pagar-boton-confirmar {
+  padding: 5px 10px;
+  width: fit-content;
+  background-color: #2aec2a;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: medium;
+}
+
+.pagar-boton-cancelar {
+  padding: 5px 10px;
+  width: fit-content;
+  background-color: #e43434;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: medium;
+}
