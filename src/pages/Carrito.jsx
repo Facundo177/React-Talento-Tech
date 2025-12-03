@@ -1,17 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { useAppContext } from "../context/AppContext";
+import { useCartContext } from "../context/CartContext";
 
 import "../styles/Carrito.css"
 
 function Carrito() {
 
-  const {carrito, vaciarCarrito, isAuthenticated} = useAppContext();
+  const { carrito, vaciarCarrito, agregarCantidad, quitarCantidad, total } = useCartContext();
 
   const navigate = useNavigate();
-
-  const total = carrito.reduce((sum, producto) => sum + producto.price, 0);
 
   const irAPagar = () => {
     navigate("/pagar", { state: { carrito } });
@@ -30,33 +28,39 @@ function Carrito() {
             : (
               <>
                 {carrito.map((producto) => (
-                  <div >
-                    {producto.title} - ${producto.price.toFixed(2)}
-                    <Link to={`/productos/${producto.category}/${producto.id}`} state={{producto}}>
-                    <button className="boton-ver-producto">Ver</button>
+                  <div key={producto.id}>
+                    {producto.title} - ${Number(producto.price).toFixed(2)}
+                    (Catidad: {producto.cantidad || 1})
+
+                    <Link to={`/productos/${producto.category}/${producto.id}`} state={{ producto }}>
+                      <button className="boton-ver-producto">Ver</button>
                     </Link>
+
+                    <button onClick={() => quitarCantidad(producto.id)}>-</button>
+                    <button onClick={() => agregarCantidad(producto.id)}>+</button>
+
                   </div>
                 ))}
 
                 <div style={{ fontWeight: 'bold' }}>
-                  Total: ${total.toFixed(2)}
+                  Total: ${Number(total).toFixed(2)}
                 </div>
 
                 <div className="botones-carrito">
 
-                <button
-                  className="boton-vaciar"
-                  onClick={vaciarCarrito}>
-                  Vaciar Carrito
-                </button>
+                  <button
+                    className="boton-vaciar"
+                    onClick={vaciarCarrito}>
+                    Vaciar Carrito
+                  </button>
 
-                <button
-                  className="boton-pagar"
-                  onClick={irAPagar}>
-                  Pagar
-                </button>
+                  <button
+                    className="boton-pagar"
+                    onClick={irAPagar}>
+                    Pagar
+                  </button>
 
-                    </div>
+                </div>
               </>
             )}
 

@@ -2,7 +2,6 @@
 // import reactLogo from './assets/react.svg'
 // import viteLogo from '/vite.svg'
 
-import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './App.css'
 import AOS from 'aos';
@@ -16,7 +15,8 @@ import ProductoDetalle from './pages/DetalleProducto';
 import IniciarSesion from './pages/Login';
 import RutaProtegida from './components/RutaProtegida';
 import Pagar from './pages/Pagar';
-import { AppProvider } from './context/AppContext';
+import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 
 
 
@@ -48,7 +48,8 @@ function App() {
     // </>
 
     <>
-      <AppProvider>
+      <AuthProvider>
+      <CartProvider>
 
         <Navbar />
         <div style={{ minHeight: '80vh' }}>
@@ -74,7 +75,8 @@ function App() {
         </div>
         <Footer mostrarSecciones={false} />
 
-      </AppProvider>
+      </CartProvider>
+      </AuthProvider>
 
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script>

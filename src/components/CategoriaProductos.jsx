@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useAppContext } from "../context/AppContext";
+import { useCartContext } from "../context/CartContext";
 
 function CategoriaProductos({ categoria }) {
 
-    const {agregarAlCarrito} = useAppContext();
+    const {agregarAlCarrito} = useCartContext();
 
     // const [productos, setProductos] = useState([]);
 

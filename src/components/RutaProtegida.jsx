@@ -1,10 +1,10 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useAppContext } from "../context/AppContext";
+import { useAuthContext } from "../context/AuthContext";
 
 function RutaProtegida({ children }) {
 
-  const { isAuthenticated } = useAppContext();
+  const { isAuthenticated } = useAuthContext();
 
   const location = useLocation();
 
