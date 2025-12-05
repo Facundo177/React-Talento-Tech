@@ -50,7 +50,7 @@ export default function IniciarSesion() {
       if (ubicacion.state?.carrito) {
         navigate("/pagar", { state: { carrito: ubicacion.state.carrito } });
       } else {
-        navigate("/productos");
+        navigate("/tienda");
       }
     } else {
       alert(

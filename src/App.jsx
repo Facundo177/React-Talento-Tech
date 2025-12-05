@@ -17,6 +17,7 @@ import RutaProtegida from './components/RutaProtegida';
 import Pagar from './pages/Pagar';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import Dashboard from './pages/Dashboard';
 
 
 
@@ -69,6 +70,9 @@ function App() {
               <RutaProtegida>
                 <Pagar/>
               </RutaProtegida>} />
+
+            <Route path="/dashboard" element={<RutaProtegida soloAdmin={true}><Dashboard /></RutaProtegida>}/>
+
 
           </Routes>
 

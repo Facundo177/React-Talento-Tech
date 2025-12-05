@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 export function AuthProvider({ children }) {
   // Estado de autenticación
   // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [usuario, setUsuario] = useState({ nombre: "", email: "" });
+  const [usuario, setUsuario] = useState(null);
 
   // Verificar token al cargar la aplicación
   useEffect(() => {

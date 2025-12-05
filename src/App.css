@@ -74,7 +74,7 @@ html {
     padding: 0;
     background-color: #0a0a0ac5;
     color: white;
-    font-family: "Segoe UI", sans-serif;
+    font-family: "Segoe UI", sans-serif !important;
     width: 100vw;
     max-width: 100%;
 }
@@ -130,25 +130,7 @@ main {
 }
 
 
-.navbar .nav-shopping-cart {
-    /* background-color: hsl(34, 57%, 80%); */
-    padding: 10px 8px 5px 8px;
-    border-radius: 50%;
-    box-shadow: 1px 1px 2px;
-}
 
-.nav-shopping-cart-number{
-    width: 20px;
-    height: 20px;
-    background-color: red;
-    border-radius: 50%;
-    position: absolute;
-    display: none;
-    z-index: 1000;
-    font-size: 0.8rem;
-    text-align: center;
-    transform: translate(-5px, 15px);
-}
 
 .hero {
     height: 100vh;
@@ -230,7 +212,7 @@ main {
 }
 .products-title h2 {
     color: hsl(60, 100%, 65%);
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif !important;
     font-size: 1.7rem;
 }
 
@@ -311,6 +293,7 @@ button:hover {
 .about-title {
     margin: 1.5rem 0 0;
     font-size: 1.7rem;
+    text-decoration: underline;
 }
 
 .about-content {
